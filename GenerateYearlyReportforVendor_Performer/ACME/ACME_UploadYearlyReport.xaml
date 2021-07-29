@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>764,1884</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>864,1914.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ACME_UpdateYearlyReport_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -73,21 +73,23 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ACME_UploadYearlyReport" sap:VirtualizedContainerService.HintSize="475.2,1819.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ACME_UploadYearlyReport" sap:VirtualizedContainerService.HintSize="475.2,1849.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="433.6,1726.4" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="adeb2fdba8e2f2da63b1561d6c520ab1" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Upload Yearly Report' /&gt;">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Uploading yearly report...&quot;]" />
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="433.6,1624" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="adeb2fdba8e2f2da63b1561d6c520ab1" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Upload Yearly Report' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,1579.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="400,1476.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -211,7 +213,7 @@
                 <OutArgument x:TypeArguments="x:String">[out_UploadID]</OutArgument>
               </ui:GetValue.Value>
             </ui:GetValue>
-            <Assign sap:VirtualizedContainerService.HintSize="358.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign DisplayName="Assign upload ID from previous paragraph" sap:VirtualizedContainerService.HintSize="358.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[out_UploadID]</OutArgument>
               </Assign.To>
@@ -241,7 +243,6 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="358.4,62.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[out_UploadID]" />
           </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>

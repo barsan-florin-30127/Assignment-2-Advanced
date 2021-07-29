@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>902.4,2636</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>902.4,2768.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ACME_CreateYearlyReport_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
@@ -93,7 +93,7 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ACME_CreateYearlyReport" sap:VirtualizedContainerService.HintSize="912.8,2571.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ACME_CreateYearlyReport" sap:VirtualizedContainerService.HintSize="912.8,2704" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Default="[new DataTable]" Name="dt_YearlyReport" />
       <Variable x:TypeArguments="s:String[]" Name="Months" />
@@ -103,6 +103,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="871.2,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Creating yearly report...&quot;]" />
     <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  vendorTaxID'" sap:VirtualizedContainerService.HintSize="871.2,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[in_TaxID]">
       <ui:TypeInto.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0c9f8ad3-f2f8-43e8-bf3b-bf1098b021e2" InformativeScreenshot="ab77e3782e3b6915eb2e52de30ab0641" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Download Monthly Report' /&gt;&lt;webctrl tag='INPUT' type='text' id='vendorTaxID' name='vendorTaxID' /&gt;">
@@ -115,7 +116,7 @@
         </ui:Target>
       </ui:TypeInto.Target>
     </ui:TypeInto>
-    <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Items="{x:Null}" DisplayName="Select Item" sap:VirtualizedContainerService.HintSize="871.2,135.2" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[in_Year]">
+    <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Items="{x:Null}" DisplayName="Select year" sap:VirtualizedContainerService.HintSize="871.2,135.2" sap2010:WorkflowViewState.IdRef="SelectItem_2" Item="[in_Year]">
       <ui:SelectItem.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f74d7f90-f774-436c-bca4-15554a36dc41" InformativeScreenshot="08548d6e0df80084520efe8f1e2cc4a8" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Download Monthly Report' /&gt;&lt;webctrl id='reportYear' tag='SELECT' class='selectpicker' name='reportYear' /&gt;">
           <ui:Target.TimeoutMS>
@@ -127,7 +128,7 @@
         </ui:Target>
       </ui:SelectItem.Target>
     </ui:SelectItem>
-    <Assign sap:VirtualizedContainerService.HintSize="871.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign DisplayName="Assign months array" sap:VirtualizedContainerService.HintSize="871.2,60" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[Months]</OutArgument>
       </Assign.To>
@@ -135,7 +136,7 @@
         <InArgument x:TypeArguments="s:String[]">[{"January","February","March","April","May","June","July","August","September","October","November","December"}]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="871.2,1772" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Months]">
+    <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each month check if download is available" sap:VirtualizedContainerService.HintSize="871.2,1772" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Months]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -151,7 +152,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Items="{x:Null}" DisplayName="Select Item" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[month.ToString]">
+            <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" Items="{x:Null}" DisplayName="Select month" sap:VirtualizedContainerService.HintSize="794.4,135.2" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[month.ToString]">
               <ui:SelectItem.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b98f61b1-e0b8-4e5f-848f-a3cc22e56315" InformativeScreenshot="34000aa8ad463282b04cb518cfa397b6" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Download Monthly Report' /&gt;&lt;webctrl tag='SELECT' class='selectpicker' name='reportMonth' /&gt;">
                   <ui:Target.TimeoutMS>
@@ -185,7 +186,7 @@
                 </ui:Target>
               </ui:Click.Target>
             </ui:Click>
-            <ui:UiElementExists DisplayName="Element Exists 'pane'" Exists="[NoReportFound]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+            <ui:UiElementExists DisplayName="Check if report does not exist" Exists="[NoReportFound]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
               <ui:UiElementExists.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="afc69188-995f-48e1-9497-42d87ec828cf" InformativeScreenshot="fee2645ba6a57f3d5ee5468080f6d3fe" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='ACME System 1 - Download Monthly Report - Google Chrome' /&gt;&lt;ctrl name='acme-test.uipath.com says' role='dialog' /&gt;&lt;ctrl idx='8' role='pane' /&gt;" TimeoutMS="5000">
                   <ui:Target.WaitForReady>
@@ -196,7 +197,7 @@
             </ui:UiElementExists>
             <If Condition="[NoReportFound]" sap:VirtualizedContainerService.HintSize="794.4,1075.2" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="375.2,262.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="No report found sequence" sap:VirtualizedContainerService.HintSize="375.2,262.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -228,7 +229,7 @@
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Sequence sap:VirtualizedContainerService.HintSize="375.2,916" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Report found sequence" sap:VirtualizedContainerService.HintSize="375.2,916" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="sd:DataTable" Name="dt_MonthlyReport" />
                   </Sequence.Variables>
@@ -237,7 +238,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Assign report file path" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[ReportFilePath]</OutArgument>
                     </Assign.To>
@@ -245,7 +246,7 @@
                       <InArgument x:TypeArguments="x:String">[path.Combine(Environment.CurrentDirectory, in_ReportsDownloadPath, "Report-"+ in_TaxID+ "-"+ in_Year+ "-"+ month.ToString + ".csv")]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="20" DisplayName="Type Into 'Edit'" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="False" Text="[ReportFilePath]">
+                  <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBetweenKeys="20" DisplayName="Type file save location" EmptyField="True" sap:VirtualizedContainerService.HintSize="333.6,135.2" sap2010:WorkflowViewState.IdRef="TypeInto_2" SimulateType="False" Text="[ReportFilePath]">
                     <ui:TypeInto.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="703cc61b-337b-48bd-acc3-1eaf744e2eab" InformativeScreenshot="52d18565e947fb7af5870f1c347e3531" Selector="&lt;wnd app='chrome.exe' cls='#32770' title='Save As' /&gt;&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' aaname='File name:' /&gt;">
                         <ui:Target.TimeoutMS>
@@ -257,7 +258,7 @@
                       </ui:Target>
                     </ui:TypeInto.Target>
                   </ui:TypeInto>
-                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'save'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -280,9 +281,9 @@
                     </ui:Click.Target>
                   </ui:Click>
                   <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
-                  <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dt_MonthlyReport]" Delimitator="Comma" DisplayName="Read CSV" FilePath="[ReportFilePath]" sap:VirtualizedContainerService.HintSize="333.6,155.2" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
-                  <ui:MergeDataTable Destination="[dt_YearlyReport]" DisplayName="Merge Data Table" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[dt_MonthlyReport]" />
-                  <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[ReportFilePath]" />
+                  <ui:ReadCsvFile Encoding="{x:Null}" DataTable="[dt_MonthlyReport]" Delimitator="Comma" DisplayName="Read Monthly Report" FilePath="[ReportFilePath]" sap:VirtualizedContainerService.HintSize="333.6,155.2" sap2010:WorkflowViewState.IdRef="ReadCsvFile_1" />
+                  <ui:MergeDataTable Destination="[dt_YearlyReport]" DisplayName="Merge into yearly report" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="MergeDataTable_1" MissingSchemaAction="Add" Source="[dt_MonthlyReport]" />
+                  <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete monthly report" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[ReportFilePath]" />
                 </Sequence>
               </If.Else>
             </If>
@@ -290,7 +291,7 @@
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <Assign sap:VirtualizedContainerService.HintSize="871.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign DisplayName="Assign yearly report path" sap:VirtualizedContainerService.HintSize="871.2,60" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_YearlyReportPath]</OutArgument>
       </Assign.To>
@@ -298,6 +299,6 @@
         <InArgument x:TypeArguments="x:String">[path.Combine(Environment.CurrentDirectory, in_ReportsDownloadPath,"Yearly-Report-"+in_Year+"-"+in_TaxID+".xlsx")]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:WriteRange AddHeaders="False" DataTable="[dt_YearlyReport]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="871.2,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="[out_YearlyReportPath]" />
+    <ui:WriteRange AddHeaders="False" DataTable="[dt_YearlyReport]" DisplayName="Write yearly report" sap:VirtualizedContainerService.HintSize="871.2,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" StartingCell="A1" WorkbookPath="[out_YearlyReportPath]" />
   </Sequence>
 </Activity>
